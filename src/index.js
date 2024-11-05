@@ -1,32 +1,40 @@
 import "./styles/main.scss";
 import CityForecast from "./components/cityForecast";
 import getForecast from "./api/getForeCast";
+import UI from "./ui/mainDisplay";
 
 const form = document.querySelector("form");
 const search = document.querySelector("#search");
 const selectUnit = document.querySelector("#unitMeasure");
 
+const display = document.querySelector(".display");
+
 const location = {
   city: "New York City",
   country: "USA",
 };
+
 let unitMeasurement = selectUnit.value;
 
 async function parseWeatherInfo() {
+  display.textContent = "";
+
   const dataFromAPI = await getForecast(location, unitMeasurement);
 
   console.log(dataFromAPI);
   const cityWeatherInfo = new CityForecast(dataFromAPI);
-
+  const displayContent = UI(cityWeatherInfo);
+  display.appendChild(displayContent);
   console.log(cityWeatherInfo);
   // TODO: getCurrentCondition, 24hours forecast,
 }
+
+parseWeatherInfo();
 
 selectUnit.addEventListener("change", () => {
   if (search.value === "") return;
 
   unitMeasurement = selectUnit.value;
-
   parseWeatherInfo();
 });
 
@@ -42,5 +50,3 @@ form.addEventListener("submit", (e) => {
   parseWeatherInfo();
   // form.reset();
 });
-
-parseWeatherInfo();
