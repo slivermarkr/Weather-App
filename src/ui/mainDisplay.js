@@ -1,4 +1,5 @@
 export default function UI(weatherInfo, unitMeasure = "metric") {
+  document.querySelector("#search").value = weatherInfo.resolvedAddress;
   return showMaindDisplay(
     weatherInfo.currentConditions,
     weatherInfo.days[0],
