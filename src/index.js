@@ -16,26 +16,26 @@ const location = {
 
 let unitMeasurement = selectUnit.value;
 
-async function parseWeatherInfo() {
+async function parseWeatherInfo(unitMeasurement) {
   display.textContent = "";
 
   const dataFromAPI = await getForecast(location, unitMeasurement);
 
-  console.log(dataFromAPI);
   const cityWeatherInfo = new CityForecast(dataFromAPI);
-  const displayContent = UI(cityWeatherInfo);
+
+  const displayContent = UI(cityWeatherInfo, unitMeasurement);
+
   display.appendChild(displayContent);
-  console.log(cityWeatherInfo);
   // TODO: getCurrentCondition, 24hours forecast,
 }
 
-parseWeatherInfo();
+parseWeatherInfo(unitMeasurement);
 
 selectUnit.addEventListener("change", () => {
   if (search.value === "") return;
 
   unitMeasurement = selectUnit.value;
-  parseWeatherInfo();
+  parseWeatherInfo(unitMeasurement);
 });
 
 form.addEventListener("submit", (e) => {
@@ -47,6 +47,6 @@ form.addEventListener("submit", (e) => {
 
   unitMeasurement = selectUnit.value;
 
-  parseWeatherInfo();
+  parseWeatherInfo(unitMeasurement);
   // form.reset();
 });
