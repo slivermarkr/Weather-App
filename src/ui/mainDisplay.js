@@ -29,6 +29,11 @@ export default function UI() {
     return container;
   };
 
+  const showDescription = (text) => {
+    const container = createElement("div", "description", text);
+    return container;
+  };
+
   function createElement(type, className, text = "") {
     const el = document.createElement(type);
     el.setAttribute("class", className);
@@ -36,8 +41,5 @@ export default function UI() {
     return el;
   }
 
-  return {
-    showMainInfo,
-    createElement,
-  };
+  return { showMainInfo, createElement, showDescription };
 }

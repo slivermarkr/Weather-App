@@ -12,6 +12,8 @@ const selectUnit = document.querySelector("#unitMeasure");
 const display = document.querySelector(".display");
 const currentCardContainer = display.querySelector(".currentCardContainer");
 const nextHoursCardContainer = display.querySelector(".nextHoursCardContainer");
+const descriptionContainer = display.querySelector(".descriptionCard");
+
 const location = {
   city: "Tokyo",
   country: "Japan",
@@ -21,6 +23,7 @@ let unitMeasurement = selectUnit.value;
 
 async function parseWeatherInfo(unitMeasurement) {
   currentCardContainer.textContent = "";
+  descriptionContainer.textContent = "";
 
   const dataFromAPI = await getForecast(location, unitMeasurement);
 
@@ -33,7 +36,9 @@ async function parseWeatherInfo(unitMeasurement) {
     unitMeasurement
   );
 
+  const desciption = ui.showDescription(cityWeatherInfo.description);
   currentCardContainer.appendChild(currentCard);
+  descriptionContainer.appendChild(desciption);
 }
 
 parseWeatherInfo(unitMeasurement);
