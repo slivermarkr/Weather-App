@@ -4,23 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-  <script defer src="bundle31e6689d6950a3f8c096.js"></script></head>
+  <script defer src="bundle65b368b86823a48ad10e.js"></script></head>
   <body>
-    <div class="container">
-      <header>
-        <h1>Weather Forescan</h1>
-      </header>
-      <nav>
-        <form action="">
-          <input type="search" id="search" placeholder="New York, USA" />
-          <select name="" id="unitMeasure">
-            <option value="metric" selected>&deg;Celsius</option>
-            <option value="us">&deg;Farenheit</option>
-          </select>
-          <button type="submit" id="searchBtn"></button>
-        </form>
-      </nav>
-      <div class="display"></div>
-    </div>
+    <header>
+      <h1>Weather Forescan</h1>
+    </header>
+    <nav>
+      <form action="">
+        <input type="search" id="search" placeholder="New York, USA" />
+        <button type="submit" id="searchBtn"></button>
+        <select name="" id="unitMeasure">
+          <option value="metric" selected>&deg;Celsius</option>
+          <option value="us">&deg;Farenheit</option>
+        </select>
+      </form>
+    </nav>
+    <section class="display">
+      <div class="mainInfoDiv">
+        <div class="currentCardContainer"></div>
+        <div class="nextHoursCardContainer"></div>
+      </div>
+      <div class="sideInfoDiv">
+        <div class="descriptionCard"></div>
+        <div class="currentSideCard"></div>
+        <div class="nextDaysCard"></div>
+        <div class="sunCard"></div>
+        <div class="windCard"></div>
+      </div>
+    </section>
   </body>
 </html>

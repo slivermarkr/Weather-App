@@ -3,12 +3,15 @@ import CityForecast from "./components/cityForecast";
 import getForecast from "./api/getForeCast";
 import UI from "./ui/mainDisplay";
 
+const ui = UI();
+
 const form = document.querySelector("form");
 const search = document.querySelector("#search");
 const selectUnit = document.querySelector("#unitMeasure");
 
 const display = document.querySelector(".display");
-
+const currentCardContainer = display.querySelector(".currentCardContainer");
+const nextHoursCardContainer = display.querySelector(".nextHoursCardContainer");
 const location = {
   city: "Tokyo",
   country: "Japan",
@@ -17,17 +20,20 @@ const location = {
 let unitMeasurement = selectUnit.value;
 
 async function parseWeatherInfo(unitMeasurement) {
-  display.textContent = "";
+  currentCardContainer.textContent = "";
 
   const dataFromAPI = await getForecast(location, unitMeasurement);
 
   const cityWeatherInfo = new CityForecast(dataFromAPI);
 
   console.log(cityWeatherInfo);
+  const currentCard = ui.showMainInfo(
+    cityWeatherInfo.currentConditions,
+    cityWeatherInfo.days[0],
+    unitMeasurement
+  );
 
-  const displayContent = UI(cityWeatherInfo, unitMeasurement);
-
-  display.appendChild(displayContent);
+  currentCardContainer.appendChild(currentCard);
 }
 
 parseWeatherInfo(unitMeasurement);
