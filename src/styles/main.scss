@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-$primary-color: white;
+$primary-color: #212226;
 $secondary-color: #f4f4f4;
 $box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
 
@@ -17,10 +17,43 @@ body {
   justify-content: center;
   height: 100vh;
   overflow: hidden;
-  margin: 0;
+  margin: 2rem 10rem;
   padding: 20px;
 }
 
+#searchBtn {
+  background-image: url("../assets/searchIcon.svg");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 16px;
+  border: 0;
+}
+
+form {
+  display: flex;
+}
+
+header {
+  border: 5px solid goldenrod;
+  width: 100%;
+}
+
+nav {
+  border: 5px solid indianred;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  border: 5px solid gainsboro;
+  width: 100%;
+}
+// .container
 // .container {
 //   background-color: $secondary-color;
 //   border-radius: 10px;

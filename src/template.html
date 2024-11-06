@@ -6,16 +6,31 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <div class="container">
+    <header>
+      <h1>Weather Forescan</h1>
+    </header>
+    <nav>
       <form action="">
         <input type="search" id="search" placeholder="New York, USA" />
+        <button type="submit" id="searchBtn"></button>
         <select name="" id="unitMeasure">
           <option value="metric" selected>&deg;Celsius</option>
           <option value="us">&deg;Farenheit</option>
         </select>
-        <button type="submit">Search</button>
       </form>
-      <div class="display"></div>
-    </div>
+    </nav>
+    <section class="display">
+      <div class="mainInfoDiv">
+        <div class="currentCard"></div>
+        <div class="nextHoursCard"></div>
+      </div>
+      <div class="sideInfoDiv">
+        <div class="descriptionCard"></div>
+        <div class="currentSideCard"></div>
+        <div class="nextDaysCard"></div>
+        <div class="sunCard"></div>
+        <div class="windCard"></div>
+      </div>
+    </section>
   </body>
 </html>
