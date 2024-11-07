@@ -3,6 +3,18 @@ import CityForecast from "./components/cityForecast";
 import getForecast from "./api/getForeCast";
 import UI from "./ui/mainDisplay";
 import createModal from "./ui/daysModal";
+import getNextTwentyFourHours from "./components/getDates";
+
+new Swiper(".swiper-container", {
+  speed: 400,
+  spaceBetween: 100,
+  // slidesPerView: 2,
+  // navigation: {
+  //   nextEl: ".swiper-button-next",
+  //   prevEl: ".swiper-button-prev",
+  // },
+});
+
 const ui = UI();
 
 const form = document.querySelector("form");
@@ -29,8 +41,9 @@ async function parseWeatherInfo(location, unitMeasurement) {
   //TODO: use try and catch method to handle errors.
   const dataFromAPI = await getForecast(location, unitMeasurement);
   const cityWeatherInfo = new CityForecast(dataFromAPI);
-  console.log(cityWeatherInfo.days);
+  console.log(cityWeatherInfo);
 
+  const nextTwentyArray = getNextTwentyFourHours(cityWeatherInfo);
   currentCardContainer.textContent = "";
   descriptionContainer.textContent = "";
   currentSideCard.textContent = "";
@@ -113,7 +126,7 @@ form.addEventListener("submit", (e) => {
 
   location.city = cityInp;
   location.country = countryInp;
-  
+
   unitMeasurement = selectUnit.value;
 
   parseWeatherInfo(location, unitMeasurement);
