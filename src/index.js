@@ -37,6 +37,7 @@ async function parseWeatherInfo(unitMeasurement) {
 
   search.value = cityWeatherInfo.resolvedAddress;
   console.log(cityWeatherInfo);
+
   const currentCard = ui.showMainInfo(
     cityWeatherInfo.currentConditions,
     cityWeatherInfo.days[0],
@@ -44,15 +45,21 @@ async function parseWeatherInfo(unitMeasurement) {
   );
 
   const desciption = ui.showDescription(cityWeatherInfo.description);
-  const moreInfo = ui.showMoreInfo(cityWeatherInfo.currentConditions);
+  const moreInfo = ui.showMoreInfo(
+    cityWeatherInfo.currentConditions,
+    unitMeasurement
+  );
   const sunInfo = ui.showSunInfo(cityWeatherInfo.currentConditions);
-  const windInfo = ui.showWindInfo(cityWeatherInfo.currentConditions);
+  const windInfo = ui.showWindInfo(
+    cityWeatherInfo.currentConditions,
+    unitMeasurement
+  );
 
   currentCardContainer.appendChild(currentCard);
   descriptionContainer.appendChild(desciption);
   currentSideCard.appendChild(moreInfo);
   sunInfoCard.appendChild(sunInfo);
-  windInfoCard.appendChild(windInfo);
+  windInfoCard.appendChild(windInfo, unitMeasurement);
 }
 
 parseWeatherInfo(unitMeasurement);

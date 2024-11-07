@@ -33,14 +33,11 @@ export default function UI() {
     const container = createElement("div", "description", text);
     return container;
   };
-  const showMoreInfo = ({
-    humidity,
-    dew,
-    feelslike,
-    uvindex,
-    visibility,
-    unitMeasure,
-  } = {}) => {
+  const showMoreInfo = (
+    { humidity, dew, feelslike, uvindex, visibility } = {},
+    unitMeasure
+  ) => {
+    console.log("from More info fn()", unitMeasure);
     const suffix = unitMeasure === "metric" ? "\u00B0C" : "\u00b0F";
     const visibilityUnit = unitMeasure === "metric" ? "km" : "mi";
 
@@ -80,7 +77,7 @@ export default function UI() {
 
   const showWindInfo = (
     { winddir = "N/A", windspeed = "N/A", windgust = "N/A" } = {},
-    unitMeasure = "metric"
+    unitMeasure
   ) => {
     const unit = unitMeasure === "metric" ? "km/hr" : "mi/hr";
 
