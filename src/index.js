@@ -25,7 +25,12 @@ const location = {
 
 let unitMeasurement = selectUnit.value;
 
-function updateDisplay(cityWeatherInfo, unitMeasurement) {
+async function parseWeatherInfo(location, unitMeasurement) {
+  //TODO: use try and catch method to handle errors.
+  const dataFromAPI = await getForecast(location, unitMeasurement);
+  const cityWeatherInfo = new CityForecast(dataFromAPI);
+  console.log(cityWeatherInfo.days);
+
   currentCardContainer.textContent = "";
   descriptionContainer.textContent = "";
   currentSideCard.textContent = "";
@@ -34,11 +39,11 @@ function updateDisplay(cityWeatherInfo, unitMeasurement) {
   nextDaysCard.textContent = "";
 
   search.value = cityWeatherInfo.resolvedAddress;
-  console.log(cityWeatherInfo);
 
+  const today = cityWeatherInfo.days[0];
   const currentCard = ui.showMainInfo(
     cityWeatherInfo.currentConditions,
-    cityWeatherInfo.days[0],
+    today,
     unitMeasurement
   );
 
@@ -61,7 +66,8 @@ function updateDisplay(cityWeatherInfo, unitMeasurement) {
   if (!document.querySelector(".showWeekOfForecast")) {
     const sevenDaysForecast = createModal(
       cityWeatherInfo.days.splice(0, 7),
-      unitMeasurement
+      unitMeasurement,
+      cityWeatherInfo.resolvedAddress
     );
     display.appendChild(sevenDaysForecast);
   }
@@ -69,7 +75,8 @@ function updateDisplay(cityWeatherInfo, unitMeasurement) {
   document.querySelector(".showWeekOfForecast").remove();
   const sevenDaysForecast = createModal(
     cityWeatherInfo.days.splice(0, 7),
-    unitMeasurement
+    unitMeasurement,
+    cityWeatherInfo.resolvedAddress
   );
   display.appendChild(sevenDaysForecast);
 
@@ -86,12 +93,6 @@ function updateDisplay(cityWeatherInfo, unitMeasurement) {
   sunInfoCard.appendChild(sunInfo);
   windInfoCard.appendChild(windInfo, unitMeasurement);
 }
-async function parseWeatherInfo(location, unitMeasurement) {
-  //TODO: use try and catch method to handle errors.
-  const dataFromAPI = await getForecast(location, unitMeasurement);
-  const cityWeatherInfo = new CityForecast(dataFromAPI);
-  updateDisplay(cityWeatherInfo, unitMeasurement);
-}
 
 parseWeatherInfo(location, unitMeasurement);
 
@@ -99,7 +100,7 @@ selectUnit.addEventListener("change", () => {
   if (search.value === "") return;
 
   unitMeasurement = selectUnit.value;
-  parseWeatherInfo(unitMeasurement);
+  parseWeatherInfo(location, unitMeasurement);
 });
 
 form.addEventListener("submit", (e) => {
