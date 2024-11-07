@@ -91,12 +91,20 @@ section {
 .dayCard {
   border: 3px solid salmon;
 }
+
 .swiper-container {
   width: 300px;
 }
+
 .swiper-slide {
-  width: 30px;
-  height: 120px;
+  width: 100px;
+  height: 200px;
+}
+
+.hourCard {
+  border: 3px solid olive;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 // /d/ .container

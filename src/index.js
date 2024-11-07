@@ -5,6 +5,8 @@ import UI from "./ui/mainDisplay";
 import createModal from "./ui/daysModal";
 import getNextTwentyFourHours from "./components/getDates";
 import createElement from "./ui/createElement";
+import printHourCards from "./ui/createHourCard";
+
 new Swiper(".swiper-container", {
   speed: 400,
   spaceBetween: 100,
@@ -30,6 +32,8 @@ const sunInfoCard = display.querySelector(".sunCard");
 const windInfoCard = display.querySelector(".windCard");
 const nextDaysCard = display.querySelector(".nextDaysCard");
 
+const swiperWrapper = display.querySelector(".swiper-wrapper");
+
 const location = {
   city: "Tokyo",
   country: "Japan",
@@ -43,13 +47,13 @@ async function parseWeatherInfo(location, unitMeasurement) {
   const cityWeatherInfo = new CityForecast(dataFromAPI);
   console.log(cityWeatherInfo);
 
-  const nextTwentyArray = getNextTwentyFourHours(cityWeatherInfo);
   currentCardContainer.textContent = "";
   descriptionContainer.textContent = "";
   currentSideCard.textContent = "";
   sunInfoCard.textContent = "";
   windInfoCard.textContent = "";
   nextDaysCard.textContent = "";
+  swiperWrapper.textContent = "";
 
   search.value = cityWeatherInfo.resolvedAddress;
 
@@ -59,6 +63,14 @@ async function parseWeatherInfo(location, unitMeasurement) {
     today,
     unitMeasurement
   );
+
+  const nextTwentyArray = getNextTwentyFourHours(cityWeatherInfo);
+
+  console.log(nextTwentyArray);
+  nextTwentyArray.forEach((hourObj, index) => {
+    const swiperItem = printHourCards(hourObj, index, unitMeasurement);
+    swiperWrapper.appendChild(swiperItem);
+  });
 
   const desciption = ui.showDescription(cityWeatherInfo.description);
   const moreInfo = ui.showMoreInfo(
