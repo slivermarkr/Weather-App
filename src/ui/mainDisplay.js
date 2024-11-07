@@ -33,6 +33,40 @@ export default function UI() {
     const container = createElement("div", "description", text);
     return container;
   };
+  const showMoreInfo = ({
+    humidity,
+    dew,
+    feelslike,
+    uvindex,
+    visibility,
+    unitMeasure,
+  } = {}) => {
+    const suffix = unitMeasure === "metric" ? "\u00B0C" : "\u00b0F";
+    const visibilityUnit = unitMeasure === "metric" ? "km" : "mi";
+
+    const container = createElement("div", "moreInfo", null);
+
+    const humidityEl = createElement(
+      "div",
+      "humidity",
+      `Humidity: ${humidity}%`
+    );
+    const dewEl = createElement("div", "dew", `Dew: ${dew}${suffix}`);
+    const realFeel = createElement(
+      "div",
+      "feelslike",
+      `Real Feel:${feelslike}${suffix}`
+    );
+    const uvindexEl = createElement("div", "uvindex", "UVIndex: " + uvindex);
+    const visibilityEl = createElement(
+      "div",
+      "visibility",
+      `Visibility: ${visibility}${visibilityUnit}`
+    );
+
+    container.append(humidityEl, realFeel, dewEl, uvindexEl, visibilityEl);
+    return container;
+  };
 
   function createElement(type, className, text = "") {
     const el = document.createElement(type);
@@ -41,5 +75,5 @@ export default function UI() {
     return el;
   }
 
-  return { showMainInfo, createElement, showDescription };
+  return { showMoreInfo, showMainInfo, createElement, showDescription };
 }

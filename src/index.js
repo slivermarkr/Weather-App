@@ -13,6 +13,7 @@ const display = document.querySelector(".display");
 const currentCardContainer = display.querySelector(".currentCardContainer");
 const nextHoursCardContainer = display.querySelector(".nextHoursCardContainer");
 const descriptionContainer = display.querySelector(".descriptionCard");
+const currentSideCard = display.querySelector(".currentSideCard");
 
 const location = {
   city: "Tokyo",
@@ -24,11 +25,12 @@ let unitMeasurement = selectUnit.value;
 async function parseWeatherInfo(unitMeasurement) {
   currentCardContainer.textContent = "";
   descriptionContainer.textContent = "";
-
+  currentSideCard.textContent = "";
   const dataFromAPI = await getForecast(location, unitMeasurement);
 
   const cityWeatherInfo = new CityForecast(dataFromAPI);
 
+  search.value = cityWeatherInfo.resolvedAddress;
   console.log(cityWeatherInfo);
   const currentCard = ui.showMainInfo(
     cityWeatherInfo.currentConditions,
@@ -37,8 +39,10 @@ async function parseWeatherInfo(unitMeasurement) {
   );
 
   const desciption = ui.showDescription(cityWeatherInfo.description);
+  const moreInfo = ui.showMoreInfo(cityWeatherInfo.currentConditions);
   currentCardContainer.appendChild(currentCard);
   descriptionContainer.appendChild(desciption);
+  currentSideCard.appendChild(moreInfo);
 }
 
 parseWeatherInfo(unitMeasurement);
