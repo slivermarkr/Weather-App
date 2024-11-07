@@ -25,16 +25,13 @@ const location = {
 
 let unitMeasurement = selectUnit.value;
 
-async function parseWeatherInfo(unitMeasurement) {
+function updateDisplay(cityWeatherInfo, unitMeasurement) {
   currentCardContainer.textContent = "";
   descriptionContainer.textContent = "";
   currentSideCard.textContent = "";
   sunInfoCard.textContent = "";
   windInfoCard.textContent = "";
   nextDaysCard.textContent = "";
-  const dataFromAPI = await getForecast(location, unitMeasurement);
-
-  const cityWeatherInfo = new CityForecast(dataFromAPI);
 
   search.value = cityWeatherInfo.resolvedAddress;
   console.log(cityWeatherInfo);
@@ -89,8 +86,14 @@ async function parseWeatherInfo(unitMeasurement) {
   sunInfoCard.appendChild(sunInfo);
   windInfoCard.appendChild(windInfo, unitMeasurement);
 }
+async function parseWeatherInfo(location, unitMeasurement) {
+  //TODO: use try and catch method to handle errors.
+  const dataFromAPI = await getForecast(location, unitMeasurement);
+  const cityWeatherInfo = new CityForecast(dataFromAPI);
+  updateDisplay(cityWeatherInfo, unitMeasurement);
+}
 
-parseWeatherInfo(unitMeasurement);
+parseWeatherInfo(location, unitMeasurement);
 
 selectUnit.addEventListener("change", () => {
   if (search.value === "") return;
@@ -101,13 +104,18 @@ selectUnit.addEventListener("change", () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let [cityInp, countryInp] = search.value.split(/,|\s+/);
+  const searchInput = search.value.trim();
+  let [cityInp, countryInp] = searchInput.split(/,|\s+/);
+  // countryInp = countryInp !== "" ? countryInp.trim() : "";
+  cityInp = cityInp ? cityInp.trim() : "";
+  countryInp = countryInp ? countryInp.trim() : "";
 
-  location["city"] = cityInp.trim();
-  location["country"] = countryInp.trim();
-  console.log(location);
+  const locationData = {
+    city: cityInp,
+    country: countryInp,
+  };
   unitMeasurement = selectUnit.value;
 
-  parseWeatherInfo(unitMeasurement);
+  parseWeatherInfo(locationData, unitMeasurement);
   // form.reset();
 });

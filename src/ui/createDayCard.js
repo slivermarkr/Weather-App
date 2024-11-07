@@ -11,8 +11,8 @@ export function createDayCard(
   // TODO: date from now
   const date = createElement("div", "dayDate", datetime);
 
-  const iconEl = createElement("img", "dayIcon", null);
-  iconEl.setAttribute("data-src", icon);
+  const iconEl = createElement("div", "dayIcon", icon);
+  // iconEl.setAttribute("data-src", icon);
   const maxEl = createElement(
     "div",
     "dayMaxTemp",
