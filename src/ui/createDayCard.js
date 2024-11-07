@@ -1,3 +1,4 @@
+import createElement from "./createElement";
 export function createDayCard(
   { tempmin = "N/A", tempmax = "N/A", datetime, icon, windspeed },
   index,
@@ -31,10 +32,4 @@ export function createDayCard(
 
   container.append(date, iconEl, maxEl, minEl, windEl);
   return container;
-}
-export function createElement(type, className, text = "") {
-  const el = document.createElement(type);
-  el.setAttribute("class", className);
-  el.textContent = text;
-  return el;
 }

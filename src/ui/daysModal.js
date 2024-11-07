@@ -1,5 +1,5 @@
-import { createDayCard, createElement } from "./createDayCard";
-
+import { createDayCard } from "./createDayCard";
+import createElement from "./createElement";
 export default function createModal(
   weekOfForecastArray,
   unitMeasurement,

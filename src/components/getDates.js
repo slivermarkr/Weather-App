@@ -19,10 +19,13 @@ export default function getNextTwentyFourHours({ days }) {
     const arrayItem = days[dayCount].hours.find(
       (hourObj) => parseInt(hourObj.datetime.slice(0, 2), 10) === hourNow
     );
-    nextTwentyFourHours.push(arrayItem);
+    if (arrayItem) {
+      nextTwentyFourHours.push(arrayItem);
+    }
     hourNow++;
   }
-  console.log(nextTwentyFourHours);
+  // console.log(nextTwentyFourHours);
+  return nextTwentyFourHours;
   // let now =  data.days[0].hours.filter(time => time === date.getHours())
   // array starts at now
 }

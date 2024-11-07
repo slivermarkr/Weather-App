@@ -4,7 +4,7 @@ import getForecast from "./api/getForeCast";
 import UI from "./ui/mainDisplay";
 import createModal from "./ui/daysModal";
 import getNextTwentyFourHours from "./components/getDates";
-
+import createElement from "./ui/createElement";
 new Swiper(".swiper-container", {
   speed: 400,
   spaceBetween: 100,
@@ -71,7 +71,7 @@ async function parseWeatherInfo(location, unitMeasurement) {
     unitMeasurement
   );
 
-  const weekForecastBtn = ui.createElement(
+  const weekForecastBtn = createElement(
     "button",
     "showWeekForecast",
     "7-day Forecast"

@@ -1,3 +1,4 @@
+import createElement from "./createElement";
 export default function UI() {
   const showMainInfo = (
     { temp = "N/A", conditions = "N/A" } = {},
@@ -102,18 +103,11 @@ export default function UI() {
     container.append(winddirEl, windSpeedEl, windGust);
     return container;
   };
-  function createElement(type, className, text = "") {
-    const el = document.createElement(type);
-    el.setAttribute("class", className);
-    el.textContent = text;
-    return el;
-  }
 
   return {
     showWindInfo,
     showMoreInfo,
     showMainInfo,
-    createElement,
     showDescription,
     showSunInfo,
   };
