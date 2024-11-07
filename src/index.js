@@ -62,12 +62,18 @@ async function parseWeatherInfo(unitMeasurement) {
     "7-day Forecast"
   );
   if (!document.querySelector(".showWeekOfForecast")) {
-    const sevenDaysForecast = createModal(cityWeatherInfo.days.splice(0, 7));
+    const sevenDaysForecast = createModal(
+      cityWeatherInfo.days.splice(0, 7),
+      unitMeasurement
+    );
     display.appendChild(sevenDaysForecast);
   }
 
   document.querySelector(".showWeekOfForecast").remove();
-  const sevenDaysForecast = createModal(cityWeatherInfo.days.splice(0, 7));
+  const sevenDaysForecast = createModal(
+    cityWeatherInfo.days.splice(0, 7),
+    unitMeasurement
+  );
   display.appendChild(sevenDaysForecast);
 
   weekForecastBtn.addEventListener("click", () => {
