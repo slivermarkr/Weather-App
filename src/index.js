@@ -111,12 +111,11 @@ form.addEventListener("submit", (e) => {
   cityInp = cityInp ? cityInp.trim() : "";
   countryInp = countryInp ? countryInp.trim() : "";
 
-  const locationData = {
-    city: cityInp,
-    country: countryInp,
-  };
+  location.city = cityInp;
+  location.country = countryInp;
+  
   unitMeasurement = selectUnit.value;
 
-  parseWeatherInfo(locationData, unitMeasurement);
+  parseWeatherInfo(location, unitMeasurement);
   // form.reset();
 });
