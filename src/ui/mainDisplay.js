@@ -68,6 +68,43 @@ export default function UI() {
     return container;
   };
 
+  const showSunInfo = ({ sunrise = "N/A", sunset = "N/A" } = {}) => {
+    const container = createElement("div", "sunInfo", null);
+
+    const sunriseEl = createElement("div", "sunrise", `Sunrise: ${sunrise}`);
+    const sunsetEl = createElement("div", "sunset", `Sunset: ${sunset}`);
+
+    container.append(sunriseEl, sunsetEl);
+    return container;
+  };
+
+  const showWindInfo = (
+    { winddir = "N/A", windspeed = "N/A", windgust = "N/A" } = {},
+    unitMeasure = "metric"
+  ) => {
+    const unit = unitMeasure === "metric" ? "km/hr" : "mi/hr";
+
+    const container = createElement("div", "sunInfo", null);
+
+    const winddirEl = createElement(
+      "div",
+      "sunrise",
+      `Wind dir.: ${winddir}` + "\u00B0"
+    );
+    const windSpeedEl = createElement(
+      "div",
+      "sunset",
+      `Wind Spd.: ${windspeed}${unit}`
+    );
+    const windGust = createElement(
+      "div",
+      "sunset",
+      `Windgust: ${windgust === null ? "N/A" : windgust + unit}`
+    );
+
+    container.append(winddirEl, windSpeedEl, windGust);
+    return container;
+  };
   function createElement(type, className, text = "") {
     const el = document.createElement(type);
     el.setAttribute("class", className);
@@ -75,5 +112,12 @@ export default function UI() {
     return el;
   }
 
-  return { showMoreInfo, showMainInfo, createElement, showDescription };
+  return {
+    showWindInfo,
+    showMoreInfo,
+    showMainInfo,
+    createElement,
+    showDescription,
+    showSunInfo,
+  };
 }
