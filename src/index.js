@@ -2,7 +2,7 @@ import "./styles/main.scss";
 import CityForecast from "./components/cityForecast";
 import getForecast from "./api/getForeCast";
 import UI from "./ui/mainDisplay";
-
+import createModal from "./ui/daysModal";
 const ui = UI();
 
 const form = document.querySelector("form");
@@ -16,6 +16,7 @@ const descriptionContainer = display.querySelector(".descriptionCard");
 const currentSideCard = display.querySelector(".currentSideCard");
 const sunInfoCard = display.querySelector(".sunCard");
 const windInfoCard = display.querySelector(".windCard");
+const nextDaysCard = display.querySelector(".nextDaysCard");
 
 const location = {
   city: "Tokyo",
@@ -30,7 +31,7 @@ async function parseWeatherInfo(unitMeasurement) {
   currentSideCard.textContent = "";
   sunInfoCard.textContent = "";
   windInfoCard.textContent = "";
-
+  nextDaysCard.textContent = "";
   const dataFromAPI = await getForecast(location, unitMeasurement);
 
   const cityWeatherInfo = new CityForecast(dataFromAPI);
@@ -55,9 +56,30 @@ async function parseWeatherInfo(unitMeasurement) {
     unitMeasurement
   );
 
+  const weekForecastBtn = ui.createElement(
+    "button",
+    "showWeekForecast",
+    "7-day Forecast"
+  );
+  if (!document.querySelector(".showWeekOfForecast")) {
+    const sevenDaysForecast = createModal(cityWeatherInfo.days.splice(0, 7));
+    display.appendChild(sevenDaysForecast);
+  }
+
+  document.querySelector(".showWeekOfForecast").remove();
+  const sevenDaysForecast = createModal(cityWeatherInfo.days.splice(0, 7));
+  display.appendChild(sevenDaysForecast);
+
+  weekForecastBtn.addEventListener("click", () => {
+    document.querySelector(".showWeekOfForecast").showModal();
+  });
+
+  // TODO: create container that will contain 24 cards; each card should contain weather forecast for the next 24 hours.
+
   currentCardContainer.appendChild(currentCard);
   descriptionContainer.appendChild(desciption);
   currentSideCard.appendChild(moreInfo);
+  nextDaysCard.appendChild(weekForecastBtn);
   sunInfoCard.appendChild(sunInfo);
   windInfoCard.appendChild(windInfo, unitMeasurement);
 }
