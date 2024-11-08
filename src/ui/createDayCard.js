@@ -18,6 +18,7 @@ export function createDayCard(
 
   const iconImg = createElement("img", "icon", null);
   iconImg.src = icons(`./${icon}.svg`);
+  iconImg.alt = icon;
   iconImg.setAttribute("data-src", icon);
   iconEl.append(iconImg);
 

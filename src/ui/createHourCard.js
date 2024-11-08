@@ -1,4 +1,6 @@
 import createElement from "./createElement";
+const icons = require.context("../assets", false, /\.svg$/);
+
 export default function printHourCards(
   { datetime, temp, icon, winddir, windspeed },
   index,
@@ -20,7 +22,15 @@ export default function printHourCards(
 
   const title = createElement("div", "hourDateTime", `Time: ${time}`);
   const hourCardTemp = createElement("div", "hourTemp", `${temp}${suffix}`);
-  const hourIcon = createElement("div", "hourIcon", `${icon}`);
+
+  const iconEl = createElement("div", "iconContainer", null);
+
+  const iconImg = createElement("img", "icon", null);
+  iconImg.src = icons(`./${icon}.svg`);
+  iconImg.alt = icon;
+  iconImg.setAttribute("data-src", icon);
+  iconEl.append(iconImg);
+
   const hourWinddir = createElement(
     "div",
     "hourWinddir",
@@ -31,7 +41,7 @@ export default function printHourCards(
     "hourWindSpeed",
     `Wind Speed:${windspeed}${unit}`
   );
-  hourCard.append(title, hourCardTemp, hourIcon, hourWinddir, hourWindSpeed);
+  hourCard.append(title, hourCardTemp, iconEl, hourWinddir, hourWindSpeed);
   container.append(hourCard);
   return container;
 }
