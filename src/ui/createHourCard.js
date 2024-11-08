@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import createElement from "./createElement";
 const icons = require.context("../assets", false, /\.svg$/);
 
@@ -9,10 +10,16 @@ export default function printHourCards(
   let time = datetime;
   let now = new Date().getHours();
   if (Number(datetime.slice(0, 2)) === now) {
-    time = "Time Now";
+    time = "Now";
   } else if (datetime === "00:00:00") {
-    time = new Date();
+    // TODO: format this to just mm/dd
+    let today = new Date();
+    let tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    time = format(tomorrow, "MM/dd");
   }
+  time = time.substr(0, 5);
+  console.log("TIME", typeof time);
   const suffix = unitMeasure === "metric" ? "\u00B0C" : "\u00b0F";
   const unit = unitMeasure === "metric" ? "km/hr" : "mi/h";
   const container = createElement("div", "swiper-slide", null);
@@ -20,7 +27,7 @@ export default function printHourCards(
   const hourCard = createElement("div", "hourCard", null);
   hourCard.setAttribute("data-index", index);
 
-  const title = createElement("div", "hourDateTime", `Time: ${time}`);
+  const title = createElement("div", "hourDateTime", `${time}`);
   const hourCardTemp = createElement("div", "hourTemp", `${temp}${suffix}`);
 
   const iconEl = createElement("div", "iconContainer", null);

@@ -1,5 +1,6 @@
 const icons = require.context("../assets", false, /\.svg$/);
 
+import { parseISO, isSameDay, format } from "date-fns";
 import createElement from "./createElement";
 export function createDayCard(
   { tempmin = "N/A", tempmax = "N/A", datetime, icon, windspeed },
@@ -12,7 +13,7 @@ export function createDayCard(
   container.setAttribute("data-index", index);
 
   // TODO: date from now
-  const date = createElement("div", "dayDate", datetime);
+  const date = createElement("div", "dayDate", transformDate(datetime));
 
   const iconEl = createElement("div", "iconContainer", null);
 
@@ -40,4 +41,14 @@ export function createDayCard(
 
   container.append(date, iconEl, maxEl, minEl, windEl);
   return container;
+}
+function transformDate(dateString) {
+  const iso = parseISO(dateString);
+
+  if (isSameDay(iso, new Date())) {
+    console.log(isSameDay(iso, new Date()));
+    return "Today";
+  }
+  const dayOfTheWeek = format(iso, "EEEE");
+  return dayOfTheWeek;
 }
