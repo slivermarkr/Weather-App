@@ -1,3 +1,5 @@
+const icons = require.context("../assets", false, /\.svg$/);
+
 import createElement from "./createElement";
 export default function UI() {
   const showMainInfo = (
@@ -73,13 +75,20 @@ export default function UI() {
   ) => {
     const unit = unitMeasure === "metric" ? "km/hr" : "mi/hr";
 
-    const container = createElement("div", "sunInfo", null);
+    const container = createElement("div", "windInfo", null);
 
-    const winddirEl = createElement(
-      "div",
-      "sunrise",
-      `Wind dir.: ${winddir}` + "\u00B0"
-    );
+    const windIconContainer = createElement("div", "windIconContainer", null);
+    const winddirEl = createElement("img", "windDirection", null);
+    const iconName = "wind-indicator";
+
+    winddirEl.src = icons(`./${iconName}.svg`);
+    winddirEl.alt = winddir;
+    winddirEl.setAttribute("data-dir", winddir);
+    // windIconContainer.style.transForm = `rotate(${90}deg)`;
+    winddirEl.style.transform = `rotate(${-winddir + 90}deg)`;
+
+    windIconContainer.appendChild(winddirEl);
+
     const windSpeedEl = createElement(
       "div",
       "sunset",
@@ -91,7 +100,7 @@ export default function UI() {
       `Windgust: ${windgust === null ? "N/A" : windgust + unit}`
     );
 
-    container.append(winddirEl, windSpeedEl, windGust);
+    container.append(windIconContainer, windSpeedEl, windGust);
     return container;
   };
 

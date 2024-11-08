@@ -38,17 +38,29 @@ export default function printHourCards(
   iconImg.setAttribute("data-src", icon);
   iconEl.append(iconImg);
 
-  const hourWinddir = createElement(
-    "div",
-    "hourWinddir",
-    `Winddir:${winddir}\u00B0`
-  );
+  const windIconContainer = createElement("div", "windIconContainer", null);
+  const winddirEl = createElement("img", "windDirection", null);
+  const iconName = "wind-indicator";
+
+  winddirEl.src = icons(`./${iconName}.svg`);
+  winddirEl.alt = winddir;
+  winddirEl.setAttribute("data-dir", winddir);
+  winddirEl.style.transform = `rotate(${-winddir + 90}deg)`;
+
+  windIconContainer.appendChild(winddirEl);
+
   const hourWindSpeed = createElement(
     "div",
     "hourWindSpeed",
-    `Wind Speed:${windspeed}${unit}`
+    `${windspeed}${unit}`
   );
-  hourCard.append(title, hourCardTemp, iconEl, hourWinddir, hourWindSpeed);
+  hourCard.append(
+    title,
+    hourCardTemp,
+    iconEl,
+    windIconContainer,
+    hourWindSpeed
+  );
   container.append(hourCard);
   return container;
 }
