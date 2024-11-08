@@ -1,3 +1,5 @@
+const icons = require.context("../assets", false, /\.svg$/);
+
 import createElement from "./createElement";
 export function createDayCard(
   { tempmin = "N/A", tempmax = "N/A", datetime, icon, windspeed },
@@ -12,8 +14,13 @@ export function createDayCard(
   // TODO: date from now
   const date = createElement("div", "dayDate", datetime);
 
-  const iconEl = createElement("div", "dayIcon", icon);
-  // iconEl.setAttribute("data-src", icon);
+  const iconEl = createElement("div", "iconContainer", null);
+
+  const iconImg = createElement("img", "icon", null);
+  iconImg.src = icons(`./${icon}.svg`);
+  iconImg.setAttribute("data-src", icon);
+  iconEl.append(iconImg);
+
   const maxEl = createElement(
     "div",
     "dayMaxTemp",
