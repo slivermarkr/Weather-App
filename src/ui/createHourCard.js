@@ -6,7 +6,7 @@ export default function printHourCards(
 ) {
   let time = datetime;
   let now = new Date().getHours();
-  if (+datetime === now) {
+  if (Number(datetime.slice(0, 2)) === now) {
     time = "Time Now";
   } else if (datetime === "00:00:00") {
     time = new Date();
