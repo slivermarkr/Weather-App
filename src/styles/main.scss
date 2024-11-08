@@ -103,13 +103,30 @@ section {
 
 .hourCard {
   border: 3px solid olive;
-  display: flex;
-  flex-wrap: wrap;
+  max-height: 200px;
+  max-width: 100px;
+  // display: flex;
+  // flex-wrap: wrap;
 }
 
 .hourCard img {
-  width: 100px;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 50px;
+  max-height: 50px;
 }
+
+.uiContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.uiContainer .temp {
+  font-size: 5rem;
+}
+
 // /d/ .container
 // .container {
 //   background-color: $secondary-color;

@@ -34,7 +34,7 @@ export default function printHourCards(
   const hourWinddir = createElement(
     "div",
     "hourWinddir",
-    `Winddir:${winddir}"\u00B0"`
+    `Winddir:${winddir}\u00B0`
   );
   const hourWindSpeed = createElement(
     "div",

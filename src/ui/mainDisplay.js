@@ -9,24 +9,15 @@ export default function UI() {
 
     const container = createElement("div", "uiContainer");
 
-    const tempEl = createElement("div", "temp", `Average:${temp}${suffix}`);
-    const conditionsEl = createElement(
-      "div",
-      "conditions",
-      `Conditions: ${conditions}`
-    );
+    const tempEl = createElement("div", "temp", `${temp}${suffix}`);
+    const conditionsEl = createElement("div", "conditions", `${conditions}`);
     const tempmaxEl = createElement(
       "div",
       "tempmax",
-      `maxtemp:${tempmax}${suffix}`
-    );
-    const tempminEl = createElement(
-      "div",
-      "tempmin",
-      `mintemp:${tempmin}${suffix}`
+      `${tempmax}${suffix}/${tempmin}${suffix}`
     );
 
-    container.append(tempEl, conditionsEl, tempmaxEl, tempminEl);
+    container.append(tempEl, conditionsEl, tempmaxEl);
     return container;
   };
 
