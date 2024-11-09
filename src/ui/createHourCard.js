@@ -47,20 +47,14 @@ export default function printHourCards(
   winddirEl.setAttribute("data-dir", winddir);
   winddirEl.style.transform = `rotate(${-winddir + 90}deg)`;
 
-  windIconContainer.appendChild(winddirEl);
-
   const hourWindSpeed = createElement(
     "div",
     "hourWindSpeed",
     `${windspeed}${unit}`
   );
-  hourCard.append(
-    title,
-    hourCardTemp,
-    iconEl,
-    windIconContainer,
-    hourWindSpeed
-  );
+
+  windIconContainer.append(winddirEl, hourWindSpeed);
+  hourCard.append(hourCardTemp, iconEl, windIconContainer, title);
   container.append(hourCard);
   return container;
 }

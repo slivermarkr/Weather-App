@@ -16,7 +16,7 @@ export default function UI() {
     const tempmaxEl = createElement(
       "div",
       "tempmax",
-      `${tempmax}${suffix}/${tempmin}${suffix}`
+      `${tempmax}\u00B0/${tempmin}\u00B0`
     );
 
     container.append(tempEl, conditionsEl, tempmaxEl);
@@ -36,26 +36,46 @@ export default function UI() {
     const visibilityUnit = unitMeasure === "metric" ? "km" : "mi";
 
     const container = createElement("div", "moreInfo", null);
+    const humidityContainer = createElement("div", "moreInfoContainer", null);
+    const humidityTitle = createElement("div", "moreInfoTitle", `Humidity`);
+    const humidityEl = createElement("div", "moreInfoTitle", `${humidity}%`);
+    humidityContainer.append(humidityTitle, humidityEl);
 
-    const humidityEl = createElement(
+    const dewContainer = createElement("div", "moreInfoContainer", null);
+    const dewTitle = createElement("div", "moreInfoTitle", `Dew`);
+    const dewEl = createElement("div", "moreInfoTitle", `${dew}${suffix}`);
+    dewContainer.append(dewTitle, dewEl);
+
+    const realFeelContainer = createElement("div", "moreInfoContainer", null);
+    const realfeelTitle = createElement("div", "moreInfoTitle", `Real Feel`);
+    const realFeelEl = createElement(
       "div",
-      "humidity",
-      `Humidity: ${humidity}%`
+      "moreInfoTitle",
+      `${feelslike}${suffix}`
     );
-    const dewEl = createElement("div", "dew", `Dew: ${dew}${suffix}`);
-    const realFeel = createElement(
-      "div",
-      "feelslike",
-      `Real Feel:${feelslike}${suffix}`
-    );
-    const uvindexEl = createElement("div", "uvindex", "UVIndex: " + uvindex);
+    realFeelContainer.append(realfeelTitle, realFeelEl);
+
+    const uvIndexContainer = createElement("div", "moreInfoContainer", null);
+    const uvIndexTitle = createElement("div", "moreInfoTitle", `UV Index`);
+    const uvIndexEl = createElement("div", "moreInfoTitle", `${uvindex}`);
+    uvIndexContainer.append(uvIndexTitle, uvIndexEl);
+
+    const visibilityContainer = createElement("div", "moreInfoContainer", null);
+    const visibilityTitle = createElement("div", "moreInfoTitle", `Visibility`);
     const visibilityEl = createElement(
       "div",
-      "visibility",
-      `Visibility: ${visibility}${visibilityUnit}`
+      "moreInfoTitle",
+      `${visibility}${visibilityUnit}`
     );
+    visibilityContainer.append(visibilityTitle, visibilityEl);
 
-    container.append(humidityEl, realFeel, dewEl, uvindexEl, visibilityEl);
+    container.append(
+      humidityContainer,
+      realFeelContainer,
+      dewContainer,
+      uvIndexContainer,
+      visibilityContainer
+    );
     return container;
   };
 
@@ -84,27 +104,53 @@ export default function UI() {
     winddirEl.src = icons(`./${iconName}.svg`);
     winddirEl.alt = winddir;
     winddirEl.setAttribute("data-dir", winddir);
-    // windIconContainer.style.transForm = `rotate(${90}deg)`;
     winddirEl.style.transform = `rotate(${-winddir + 90}deg)`;
-
-    windIconContainer.appendChild(winddirEl);
 
     const windSpeedEl = createElement(
       "div",
-      "sunset",
-      `Wind Spd.: ${windspeed}${unit}`
+      "windSpeed",
+      `${windspeed}${unit}`
     );
+
+    windIconContainer.append(winddirEl, windSpeedEl);
+
     const windGust = createElement(
       "div",
-      "sunset",
+      "windGust",
       `Windgust: ${windgust === null ? "N/A" : windgust + unit}`
     );
 
-    container.append(windIconContainer, windSpeedEl, windGust);
+    container.append(windIconContainer, windGust);
     return container;
   };
 
+  const showSnowInfo = (
+    { snow = "N/A", snowdepth = "N/A" } = {},
+    unitMeasure
+  ) => {
+    const unit = unitMeasure === "metric" ? "cm" : "in";
+
+    const container = createElement("div", "moreInfo", null);
+
+    const snowContainer = createElement("div", "moreInfoContainer", null);
+    const snowTitle = createElement("div", "moreInfoTitle", `Snow`);
+    const snowEl = createElement("div", "moreInfoTitle", `${snow}${unit}`);
+    snowContainer.append(snowTitle, snowEl);
+
+    const snowDepthContainer = createElement("div", "moreInfoContainer", null);
+    const snowDepthTitle = createElement("div", "moreInfoTitle", `Snow Depth`);
+    const snowDepthEl = createElement(
+      "div",
+      "moreInfoTitle",
+      `${snowdepth}${unit}`
+    );
+    snowDepthContainer.append(snowDepthTitle, snowDepthEl);
+
+    container.append(snowContainer, snowDepthContainer);
+    return container;
+  };
   return {
+    showSnowInfo,
     showWindInfo,
     showMoreInfo,
     showMainInfo,

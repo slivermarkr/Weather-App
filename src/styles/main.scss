@@ -78,14 +78,37 @@ section {
 
 .moreInfo {
   border: 3px solid goldenrod;
+  display: flex;
+  gap: 2rem;
 }
 
 .sunCard {
   border: 3px solid violet;
 }
 
+.sunInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
 .windCard {
   border: 3px solid rosybrown;
+}
+
+.windIconContainer {
+  display: flex;
+}
+
+.windIconContainer img {
+  min-width: 8px;
+  min-height: 8px;
+  max-width: 16px;
+  max-height: 16px;
+}
+
+.windSnowontainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .dayCard {
@@ -103,18 +126,29 @@ section {
 
 .hourCard {
   border: 3px solid olive;
-  max-height: 200px;
+  max-height: 300px;
   max-width: 100px;
-  // display: flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   // flex-wrap: wrap;
 }
 
-.hourCard img {
+.iconContainer img {
   min-width: 30px;
   min-height: 30px;
-  max-width: 50px;
-  max-height: 50px;
+  max-height: 40px;
+  max-width: 40px;
 }
+
+// .hourCard img {
+//   // min-width: 30px;
+//   // min-height: 30px;
+//   // max-width: 50px;
+//   // max-height: 50px;
+// }
 
 .uiContainer {
   display: flex;

@@ -30,6 +30,7 @@ const descriptionContainer = display.querySelector(".descriptionCard");
 const currentSideCard = display.querySelector(".currentSideCard");
 const sunInfoCard = display.querySelector(".sunCard");
 const windInfoCard = display.querySelector(".windCard");
+const snowInfoCard = display.querySelector(".snowCard");
 const nextDaysCard = display.querySelector(".nextDaysCard");
 
 const swiperWrapper = display.querySelector(".swiper-wrapper");
@@ -52,6 +53,7 @@ async function parseWeatherInfo(location, unitMeasurement) {
   currentSideCard.textContent = "";
   sunInfoCard.textContent = "";
   windInfoCard.textContent = "";
+  snowInfoCard.textContent = "";
   nextDaysCard.textContent = "";
   swiperWrapper.textContent = "";
 
@@ -79,6 +81,11 @@ async function parseWeatherInfo(location, unitMeasurement) {
   );
   const sunInfo = ui.showSunInfo(cityWeatherInfo.currentConditions);
   const windInfo = ui.showWindInfo(
+    cityWeatherInfo.currentConditions,
+    unitMeasurement
+  );
+
+  const snowInfo = ui.showSnowInfo(
     cityWeatherInfo.currentConditions,
     unitMeasurement
   );
@@ -116,7 +123,8 @@ async function parseWeatherInfo(location, unitMeasurement) {
   currentSideCard.appendChild(moreInfo);
   nextDaysCard.appendChild(weekForecastBtn);
   sunInfoCard.appendChild(sunInfo);
-  windInfoCard.appendChild(windInfo, unitMeasurement);
+  windInfoCard.appendChild(windInfo);
+  snowInfoCard.appendChild(snowInfo);
 }
 
 parseWeatherInfo(location, unitMeasurement);
