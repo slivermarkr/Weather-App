@@ -51,8 +51,8 @@ nav {
 }
 
 section {
-  border: 5px solid gainsboro;
-  width: 100%;
+  // border: 5px solid gainsboro;
+  // width: 100%;
 }
 
 .display {
@@ -60,12 +60,14 @@ section {
   grid-template-columns: 1.5fr 3fr;
 }
 
-.mainInfoCard {
+.mainInfoDiv {
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.display > div {
-  border: 3px solid saddlebrown;
+.mainInfoCard {
+  display: flex;
 }
 
 .sideInfoCard {
@@ -106,7 +108,7 @@ section {
   max-height: 16px;
 }
 
-.windSnowontainer {
+.windSnowContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -119,9 +121,17 @@ section {
   width: 300px;
 }
 
-.swiper-slide {
-  width: 100px;
-  height: 200px;
+// .swiper-slide {
+//   width: 100px;
+//   height: 200px;
+// }
+
+.nextHoursCardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .hourCard {
