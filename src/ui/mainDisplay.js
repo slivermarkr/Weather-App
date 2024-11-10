@@ -10,6 +10,7 @@ export default function UI() {
     const suffix = unitMeasure === "metric" ? "\u00B0C" : "\u00b0F";
 
     const container = createElement("div", "uiContainer");
+    container.classList.add("flex-group");
 
     const tempEl = createElement("div", "temp", `${temp}${suffix}`);
     const conditionsEl = createElement("div", "conditions", `${conditions}`);
