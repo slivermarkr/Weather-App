@@ -83,10 +83,27 @@ export default function UI() {
   const showSunInfo = ({ sunrise = "N/A", sunset = "N/A" } = {}) => {
     const container = createElement("div", "sunInfo", null);
 
-    const sunriseEl = createElement("div", "sunrise", `Sunrise: ${sunrise}`);
-    const sunsetEl = createElement("div", "sunset", `Sunset: ${sunset}`);
+    const sunriseContainer = createElement("div", "sunIconContainer", null);
+    const sunriseIcon = createElement("img", "sunriseIcon", null);
+    const sunriseName = "sunrise";
 
-    container.append(sunriseEl, sunsetEl);
+    sunriseIcon.src = icons(`./${sunriseName}.svg`);
+    sunriseIcon.alt = "sunrise";
+    const sunriseEl = createElement("div", "sunrise", `${sunrise}`);
+    sunriseContainer.append(sunriseIcon, sunriseEl);
+
+    const sunsetContainer = createElement("div", "sunIconContainer", null);
+    const sunsetIcon = createElement("img", "sunsetIcon", null);
+    const sunsetName = "sunset";
+
+    sunsetIcon.src = icons(`./${sunsetName}.svg`);
+    sunsetIcon.alt = "sunset";
+
+    const sunsetEl = createElement("div", "sunset", `${sunset}`);
+
+    sunsetContainer.append(sunsetEl, sunsetIcon);
+
+    container.append(sunriseContainer, sunsetContainer);
     return container;
   };
 
@@ -99,13 +116,13 @@ export default function UI() {
     const container = createElement("div", "windInfo", null);
 
     const windIconContainer = createElement("div", "windIconContainer", null);
-    const winddirEl = createElement("img", "windDirection", null);
-    const iconName = "wind-indicator";
+    const sunriseIcon = createElement("img", "windDirection", null);
+    const sunrise = "wind-indicator";
 
-    winddirEl.src = icons(`./${iconName}.svg`);
-    winddirEl.alt = winddir;
-    winddirEl.setAttribute("data-dir", winddir);
-    winddirEl.style.transform = `rotate(${-winddir + 90}deg)`;
+    sunriseIcon.src = icons(`./${sunrise}.svg`);
+    sunriseIcon.alt = winddir;
+    sunriseIcon.setAttribute("data-dir", winddir);
+    sunriseIcon.style.transform = `rotate(${-winddir + 90}deg)`;
 
     const windSpeedEl = createElement(
       "div",
@@ -113,7 +130,7 @@ export default function UI() {
       `${windspeed}${unit}`
     );
 
-    windIconContainer.append(winddirEl, windSpeedEl);
+    windIconContainer.append(sunriseIcon, windSpeedEl);
 
     const windGust = createElement(
       "div",

@@ -117,11 +117,35 @@ nav {
   font-size: 2rem;
 }
 
+.sunCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 2rem;
+  justify-content: center;
+  padding: 0.3rem;
+  background: linear-gradient(
+    to right,
+    hsl(60, 80%, 80%),
+    hsl(45, 100%, 70%),
+    hsl(30, 100%, 60%)
+  );
+  border-radius: 9px;
+}
+
+.sunIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.3rem;
+}
+
 .sunInfo {
   display: flex;
   justify-content: space-between;
+  color: black;
+  font-size: 1.2rem;
 }
-
 .windCard {
   border: 3px solid rosybrown;
 }
