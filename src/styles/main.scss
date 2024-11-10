@@ -20,6 +20,7 @@ body {
   margin: 2rem 16rem;
   padding: 20px;
   color: $secondary-color;
+  gap: 1.2rem;
 }
 
 #searchBtn {
@@ -27,12 +28,25 @@ body {
   background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: center;
-  width: 1.5rem;
-  height: 1.5rem;
+  min-width: 2rem;
+  min-height: 2rem;
   font-size: 16px;
   border: 0;
+  border-radius: 3px;
 }
 
+#search {
+  max-width: 720px;
+  min-width: 200px;
+  min-height: 2rem;
+
+  font-size: large;
+}
+
+#unitMeasure {
+  min-height: 2rem;
+  font-size: large;
+}
 form {
   display: flex;
 }
@@ -149,6 +163,14 @@ nav {
 .hourCard > .windIconContainer {
   justify-content: center;
   align-items: center;
+  gap: 0.1rem;
+}
+
+.hourCard *img {
+  min-width: 8px;
+  min-height: 8px;
+  max-width: 12px;
+  max-height: 12px;
 }
 
 .iconContainer img {
