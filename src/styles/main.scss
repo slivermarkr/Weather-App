@@ -63,10 +63,12 @@ nav {
 .display {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
 }
 @media (max-width: 768px) {
   .display {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 }
 
@@ -80,15 +82,39 @@ nav {
   display: flex;
 }
 
-.sideInfoCard {
+.sideInfoDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-
-.description {
+.showWeekForecast {
+  width: 100%;
+  min-width: 2rem;
+  min-height: 2rem;
+  font-size: large;
+  font-weight: bold;
 }
 
 .moreInfo {
   display: flex;
   gap: 2rem;
+}
+
+.moreInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.moreInfoTitle {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.moreInfoValue {
+  font-size: 2rem;
 }
 
 .sunInfo {

@@ -39,33 +39,33 @@ export default function UI() {
     const container = createElement("div", "moreInfo", null);
     const humidityContainer = createElement("div", "moreInfoContainer", null);
     const humidityTitle = createElement("div", "moreInfoTitle", `Humidity`);
-    const humidityEl = createElement("div", "moreInfoTitle", `${humidity}%`);
+    const humidityEl = createElement("div", "moreInfoValue", `${humidity}%`);
     humidityContainer.append(humidityTitle, humidityEl);
 
     const dewContainer = createElement("div", "moreInfoContainer", null);
     const dewTitle = createElement("div", "moreInfoTitle", `Dew`);
-    const dewEl = createElement("div", "moreInfoTitle", `${dew}${suffix}`);
+    const dewEl = createElement("div", "moreInfoValue", `${dew}${suffix}`);
     dewContainer.append(dewTitle, dewEl);
 
     const realFeelContainer = createElement("div", "moreInfoContainer", null);
     const realfeelTitle = createElement("div", "moreInfoTitle", `Real Feel`);
     const realFeelEl = createElement(
       "div",
-      "moreInfoTitle",
+      "moreInfoValue",
       `${feelslike}${suffix}`
     );
     realFeelContainer.append(realfeelTitle, realFeelEl);
 
     const uvIndexContainer = createElement("div", "moreInfoContainer", null);
-    const uvIndexTitle = createElement("div", "moreInfoTitle", `UV Index`);
-    const uvIndexEl = createElement("div", "moreInfoTitle", `${uvindex}`);
+    const uvIndexTitle = createElement("div", "moreInfoTitle", `UV`);
+    const uvIndexEl = createElement("div", "moreInfoValue", `${uvindex}`);
     uvIndexContainer.append(uvIndexTitle, uvIndexEl);
 
     const visibilityContainer = createElement("div", "moreInfoContainer", null);
     const visibilityTitle = createElement("div", "moreInfoTitle", `Visibility`);
     const visibilityEl = createElement(
       "div",
-      "moreInfoTitle",
+      "moreInfoValue",
       `${visibility}${visibilityUnit}`
     );
     visibilityContainer.append(visibilityTitle, visibilityEl);
