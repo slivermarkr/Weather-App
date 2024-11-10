@@ -17,7 +17,7 @@ body {
   justify-content: center;
   height: 100vh;
   overflow: hidden;
-  margin: 2rem 10rem;
+  margin: 2rem 16rem;
   padding: 20px;
   color: $secondary-color;
 }
@@ -38,26 +38,17 @@ form {
 }
 
 header {
-  border: 5px solid goldenrod;
-  width: 100%;
 }
 
 nav {
-  border: 5px solid indianred;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-section {
-  // border: 5px solid gainsboro;
-  // width: 100%;
-}
-
 .display {
   display: grid;
-  grid-template-columns: 1.5fr 3fr;
+  grid-template-columns: repeat(minmax(330px, 1fr));
 }
 
 .mainInfoDiv {
@@ -71,21 +62,14 @@ section {
 }
 
 .sideInfoCard {
-  border: 3px solid aquamarine;
 }
 
 .description {
-  border: 3px solid aquamarine;
 }
 
 .moreInfo {
-  border: 3px solid goldenrod;
   display: flex;
   gap: 2rem;
-}
-
-.sunCard {
-  border: 3px solid violet;
 }
 
 .sunInfo {
@@ -117,8 +101,10 @@ section {
   border: 3px solid salmon;
 }
 
-.swiper-container {
-  width: 300px;
+.swiper-wrapper {
+  display: flex;
+  overflow: scroll;
+  max-width: 300px;
 }
 
 // .swiper-slide {

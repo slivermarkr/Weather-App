@@ -1,3 +1,4 @@
+import "./styles/reset.scss";
 import "./styles/main.scss";
 import CityForecast from "./components/cityForecast";
 import getForecast from "./api/getForeCast";
@@ -7,15 +8,15 @@ import getNextTwentyFourHours from "./components/getDates";
 import createElement from "./ui/createElement";
 import printHourCards from "./ui/createHourCard";
 
-new Swiper(".swiper-container", {
-  speed: 400,
-  // spaceBetween: 60,
-  slidesPerView: 2,
-  // navigation: {
-  //   nextEl: ".swiper-button-next",
-  //   prevEl: ".swiper-button-prev",
-  // },
-});
+// new Swiper(".swiper-container", {
+//   speed: 400,
+//   // spaceBetween: 60,
+//   slidesPerView: 2,
+//   // navigation: {
+//   //   nextEl: ".swiper-button-next",
+//   //   prevEl: ".swiper-button-prev",
+//   // },
+// });
 
 const ui = UI();
 
