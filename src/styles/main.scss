@@ -336,13 +336,19 @@ button {
   background-color: #212226;
   color: #f4f4f4;
 }
+.showWeekForecast:hover {
+  color: #212226;
+  background-color: #f4f4f4;
+}
 
 .close,
 .modalCity {
   margin-bottom: 1rem;
   color: $secondary-color;
 }
-
+.close:hover {
+  color: black;
+}
 .modalCity {
   margin-top: 1rem;
   font-size: 1.5rem;
