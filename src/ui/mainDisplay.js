@@ -132,13 +132,16 @@ export default function UI() {
 
     windIconContainer.append(sunriseIcon, windSpeedEl);
 
-    const windGust = createElement(
+    const windGustContainer = createElement("div", "moreInfoContainer", null);
+    const windGustTitle = createElement("div", "moreInfoTitle", `Windgust`);
+    const windGustEl = createElement(
       "div",
       "windGust",
-      `Windgust: ${windgust === null ? "N/A" : windgust + unit}`
+      `${windgust === null ? "N/A" : windgust + unit}`
     );
+    windGustContainer.append(windGustTitle, windGustEl);
 
-    container.append(windIconContainer, windGust);
+    container.append(windIconContainer, windGustContainer);
     return container;
   };
 

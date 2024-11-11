@@ -125,11 +125,12 @@ nav {
   padding: 0.3rem;
   background: linear-gradient(
     to right,
-    hsl(60, 63%, 71%),
-    hsl(45, 50%, 54%),
-    hsl(30, 66%, 41%)
+    hsl(60, 100%, 83%),
+    hsl(45, 100%, 70%),
+    hsl(30, 100%, 60%)
   );
   border-radius: 9px;
+  opacity: 0.6;
 }
 
 .sunIconContainer {
@@ -138,6 +139,7 @@ nav {
   align-items: center;
   gap: 1rem;
   padding: 0.3rem;
+  font-weight: 500;
 }
 
 .sunInfo {
@@ -146,8 +148,24 @@ nav {
   color: black;
   font-size: 1.2rem;
 }
-.windCard {
-  border: 3px solid rosybrown;
+
+.windInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.windInfo > * {
+  font-size: 2rem;
+}
+
+.windInfo > div > img {
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  min-width: 2.3rem;
+  min-height: 2.3rem;
 }
 
 .windIconContainer {
