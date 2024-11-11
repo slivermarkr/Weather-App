@@ -115,22 +115,27 @@ export default function UI() {
 
     const container = createElement("div", "windInfo", null);
 
-    const windIconContainer = createElement("div", "windIconContainer", null);
-    const sunriseIcon = createElement("img", "windDirection", null);
-    const sunrise = "wind-indicator";
+    const windContainer = createElement("div", "windContainer", null);
+    windContainer.classList.add("moreInfoContainer");
+    const windTitle = createElement("div", "moreInfoTitle", `Direction/Speed`);
 
-    sunriseIcon.src = icons(`./${sunrise}.svg`);
-    sunriseIcon.alt = winddir;
-    sunriseIcon.setAttribute("data-dir", winddir);
-    sunriseIcon.style.transform = `rotate(${-winddir + 90}deg)`;
+    const windIconContainer = createElement("div", "windIconContainer", null);
+
+    const windIcon = createElement("img", "windDirection", null);
+    const windName = "wind-indicator";
+
+    windIcon.src = icons(`./${windName}.svg`);
+    windIcon.alt = winddir;
+    windIcon.setAttribute("data-dir", winddir);
+    windIcon.style.transform = `rotate(${-winddir + 90}deg)`;
 
     const windSpeedEl = createElement(
       "div",
       "windSpeed",
       `${windspeed}${unit}`
     );
-
-    windIconContainer.append(sunriseIcon, windSpeedEl);
+    windIconContainer.append(windIcon, windSpeedEl);
+    windContainer.append(windTitle, windIconContainer);
 
     const windGustContainer = createElement("div", "moreInfoContainer", null);
     const windGustTitle = createElement("div", "moreInfoTitle", `Windgust`);
@@ -141,7 +146,7 @@ export default function UI() {
     );
     windGustContainer.append(windGustTitle, windGustEl);
 
-    container.append(windIconContainer, windGustContainer);
+    container.append(windContainer, windGustContainer);
     return container;
   };
 
