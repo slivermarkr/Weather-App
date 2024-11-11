@@ -92,6 +92,7 @@ nav {
   width: 100%;
   min-width: 2rem;
   min-height: 2rem;
+  max-height: 2rem;
   font-size: large;
   font-weight: bold;
 }
@@ -335,10 +336,17 @@ button {
 .showWeekForecast {
   background-color: #212226;
   color: #f4f4f4;
+  outline: none;
+  border: white solid 1px;
+  border-radius: 9px;
+  // padding: 0.3rem;
 }
 .showWeekForecast:hover {
   color: #212226;
   background-color: #f4f4f4;
+  border: black solid 2px;
+  // border-radius: 9px;
+  // padding: 0.3rem;
 }
 
 .close,
