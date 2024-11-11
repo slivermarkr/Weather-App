@@ -15,5 +15,6 @@ export default async function getForecast({ city, country } = {}, unitGroup) {
     return result;
   } catch (error) {
     console.log(error);
+    return;
   }
 }

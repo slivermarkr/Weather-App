@@ -43,6 +43,7 @@ async function parseWeatherInfo(location, unitMeasurement) {
   //TODO: use try and catch method to handle errors.
   const dataFromAPI = await getForecast(location, unitMeasurement);
   const cityWeatherInfo = new CityForecast(dataFromAPI);
+
   console.log(cityWeatherInfo);
 
   currentCardContainer.textContent = "";
@@ -64,12 +65,12 @@ async function parseWeatherInfo(location, unitMeasurement) {
   );
 
   const nextTwentyArray = getNextTwentyFourHours(cityWeatherInfo);
-
-  console.log(nextTwentyArray);
-  nextTwentyArray.forEach((hourObj, index) => {
-    const swiperItem = printHourCards(hourObj, index, unitMeasurement);
-    swiperWrapper.appendChild(swiperItem);
-  });
+  if (nextTwentyArray) {
+    nextTwentyArray.forEach((hourObj, index) => {
+      const swiperItem = printHourCards(hourObj, index, unitMeasurement);
+      swiperWrapper.appendChild(swiperItem);
+    });
+  }
 
   const desciption = ui.showDescription(cityWeatherInfo.description);
   const moreInfo = ui.showMoreInfo(

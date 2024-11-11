@@ -1,5 +1,10 @@
 export default class CityForecast {
-  constructor({ resolvedAddress, description, currentConditions, days } = {}) {
+  constructor({
+    resolvedAddress = "N/A",
+    description = "N/A",
+    currentConditions = {},
+    days = [],
+  } = {}) {
     this.resolvedAddress = resolvedAddress;
     this.description = description;
     this.currentConditions = currentConditions;

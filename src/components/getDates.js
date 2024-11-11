@@ -1,5 +1,5 @@
 export default function getNextTwentyFourHours({ days }) {
-  if (!days) {
+  if (!days.length) {
     console.log("getDates() days: ", days);
     return;
   }
