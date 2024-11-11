@@ -191,14 +191,11 @@ nav {
   grid-template-columns: 1fr 1fr;
 }
 
-.dayCard {
-  border: 3px solid salmon;
-}
-
 .swiper-wrapper {
   display: flex;
   overflow: scroll;
   max-width: 300px;
+  gap: 0.8rem;
 }
 
 // .swiper-slide {
@@ -217,15 +214,16 @@ nav {
 .hourCard {
   padding: 0.4rem;
   width: 8rem;
-  border: 3px solid olive;
-  border-radius: 12px;
   max-height: 300px;
   max-width: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+
+  background-color: #515151;
+  border-radius: 16px;
   // flex-wrap: wrap;
 }
 
@@ -292,6 +290,62 @@ nav {
   // transform: rotate(90deg);
 }
 
+.close {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.daysContainer {
+  display: flex;
+  gap: 0.3rem;
+}
+.dayCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: self-start;
+  padding: 0.5rem;
+  gap: 0.3rem;
+
+  background-color: #515151;
+  border-radius: 16px;
+  // box-shadow: ;
+
+  color: $secondary-color;
+}
+button {
+  cursor: pointer;
+}
+.dayCard > :nth-child(-n + 3) {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.showWeekForecast {
+  background-color: #212226;
+  color: #f4f4f4;
+}
+
+.close,
+.modalCity {
+  margin-bottom: 1rem;
+  color: $secondary-color;
+}
+.modalCity {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+// .showWeekForecast > dialog {
+//   background-color: #212226;
+//   color: #f4f4f4;
+// }
+
+dialog {
+  background-color: rgb(41, 40, 40);
+}
 // /d/ .container
 // .container {
 //   background-color: $secondary-color;

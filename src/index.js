@@ -98,7 +98,7 @@ async function parseWeatherInfo(location, unitMeasurement) {
   );
   if (!document.querySelector(".showWeekOfForecast")) {
     const sevenDaysForecast = createModal(
-      cityWeatherInfo.days.splice(0, 7),
+      cityWeatherInfo.days.slice(0, 7),
       unitMeasurement,
       cityWeatherInfo.resolvedAddress
     );
@@ -107,7 +107,7 @@ async function parseWeatherInfo(location, unitMeasurement) {
 
   document.querySelector(".showWeekOfForecast").remove();
   const sevenDaysForecast = createModal(
-    cityWeatherInfo.days.splice(0, 7),
+    cityWeatherInfo.days.slice(0, 7),
     unitMeasurement,
     cityWeatherInfo.resolvedAddress
   );

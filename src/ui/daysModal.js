@@ -7,7 +7,7 @@ export default function createModal(
 ) {
   const modal = createElement("dialog", "showWeekOfForecast", null);
   const closeBtn = createElement("span", "close", "\u2716");
-  const title = createElement("div", "modalTitle", "7-day Forecast");
+  // const title = createElement("div", "modalTitle", "7-day Forecast");
   const cityEl = createElement("div", "modalCity", city);
   const daysContainer = createElement("div", "daysContainer", null);
   daysContainer.textContent = "";
@@ -16,7 +16,7 @@ export default function createModal(
     daysContainer.appendChild(forecastItem);
   });
 
-  modal.append(closeBtn, title, cityEl, daysContainer);
+  modal.append(closeBtn, cityEl, daysContainer);
 
   closeBtn.addEventListener("click", () => {
     modal.close();

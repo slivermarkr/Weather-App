@@ -3,7 +3,7 @@ const icons = require.context("../assets", false, /\.svg$/);
 import { parseISO, isSameDay, format } from "date-fns";
 import createElement from "./createElement";
 export function createDayCard(
-  { tempmin = "N/A", tempmax = "N/A", datetime, icon, windspeed },
+  { tempmin = "N/A", tempmax = "N/A", datetime, icon, windspeed, winddir },
   index,
   unitMeasure
 ) {
@@ -14,7 +14,11 @@ export function createDayCard(
 
   // TODO: date from now
   const date = createElement("div", "dayDate", transformDate(datetime));
-
+  const dateNumber = createElement(
+    "div",
+    "dayDateNum",
+    format(parseISO(datetime), "MM/dd")
+  );
   const iconEl = createElement("div", "iconContainer", null);
 
   const iconImg = createElement("img", "icon", null);
@@ -23,23 +27,28 @@ export function createDayCard(
   iconImg.setAttribute("data-src", icon);
   iconEl.append(iconImg);
 
-  const maxEl = createElement(
+  const maxEl = createElement("div", "dayMaxTemp", `Max: ${tempmax}${suffix}`);
+  const minEl = createElement("div", "dayMinTemp", `Min: ${tempmin}${suffix}`);
+  // const windEl = createElement("div", "dayWind", `Speed: ${windspeed}${unit}`);
+
+  const windIconContainer = createElement("div", "windIconContainer", null);
+  const winddirEl = createElement("img", "windDirection", null);
+  const iconName = "wind-indicator";
+
+  winddirEl.src = icons(`./${iconName}.svg`);
+  winddirEl.alt = winddir;
+  winddirEl.setAttribute("data-dir", winddir);
+  winddirEl.style.transform = `rotate(${-winddir + 90}deg)`;
+
+  const hourWindSpeed = createElement(
     "div",
-    "dayMaxTemp",
-    `Max temp.:${tempmax}${suffix}`
-  );
-  const minEl = createElement(
-    "div",
-    "dayMinTemp",
-    `Min temp.:${tempmin}${suffix}`
-  );
-  const windEl = createElement(
-    "div",
-    "dayWind",
-    `Wind Spd.: ${windspeed}${unit}`
+    "hourWindSpeed",
+    `${windspeed}${unit}`
   );
 
-  container.append(date, iconEl, maxEl, minEl, windEl);
+  windIconContainer.append(winddirEl, hourWindSpeed);
+
+  container.append(date, dateNumber, iconEl, maxEl, minEl, windIconContainer);
   return container;
 }
 function transformDate(dateString) {
