@@ -160,14 +160,14 @@ export default function UI() {
 
     const snowContainer = createElement("div", "moreInfoContainer", null);
     const snowTitle = createElement("div", "moreInfoTitle", `Snow`);
-    const snowEl = createElement("div", "moreInfoTitle", `${snow}${unit}`);
+    const snowEl = createElement("div", "moreInfoValue", `${snow}${unit}`);
     snowContainer.append(snowTitle, snowEl);
 
     const snowDepthContainer = createElement("div", "moreInfoContainer", null);
     const snowDepthTitle = createElement("div", "moreInfoTitle", `Snow Depth`);
     const snowDepthEl = createElement(
       "div",
-      "moreInfoTitle",
+      "moreInfoValue",
       `${snowdepth}${unit}`
     );
     snowDepthContainer.append(snowDepthTitle, snowDepthEl);

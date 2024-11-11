@@ -170,6 +170,7 @@ nav {
 
 .windIconContainer {
   display: flex;
+  gap: 0.2rem;
 }
 
 .hourWindSpeed {
@@ -246,6 +247,21 @@ nav {
   min-height: 30px;
   max-height: 40px;
   max-width: 40px;
+}
+
+.snowCard > .moreInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.snowCard > .moreInfoContainer > .moreInfoTitle {
+  font-size: 13px;
+}
+.snowCard > .moreInfoContainer > .moreInfoValue {
+  font-size: 2rem;
 }
 
 // .hourCard img {
