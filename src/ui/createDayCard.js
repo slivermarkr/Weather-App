@@ -8,7 +8,7 @@ export function createDayCard(
   unitMeasure
 ) {
   const suffix = unitMeasure === "metric" ? "\u00B0C" : "\u00b0F";
-  const unit = unitMeasure === "metric" ? "km/hr" : "mi/h";
+  const unit = unitMeasure === "metric" ? "km/hr" : "mph";
   const container = createElement("div", "dayCard", null);
   container.setAttribute("data-index", index);
 

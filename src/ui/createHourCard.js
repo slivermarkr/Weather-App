@@ -21,11 +21,11 @@ export default function printHourCards(
   time = time.substr(0, 5);
   console.log("TIME", typeof time);
   const suffix = unitMeasure === "metric" ? "\u00B0C" : "\u00b0F";
-  const unit = unitMeasure === "metric" ? "km/hr" : "mi/h";
+  const unit = unitMeasure === "metric" ? "km/hr" : "mph";
   const container = createElement("div", "swiper-slide", null);
-
-  const hourCard = createElement("div", "hourCard", null);
-  hourCard.setAttribute("data-index", index);
+  container.classList.add("hourCard");
+  // const hourCard = createElement("div", "hourCard", null);
+  // hourCard.setAttribute("data-index", index);
 
   const title = createElement("div", "hourDateTime", `${time}`);
   const hourCardTemp = createElement("div", "hourTemp", `${temp}${suffix}`);
@@ -54,7 +54,7 @@ export default function printHourCards(
   );
 
   windIconContainer.append(winddirEl, hourWindSpeed);
-  hourCard.append(hourCardTemp, iconEl, windIconContainer, title);
-  container.append(hourCard);
+  container.append(hourCardTemp, iconEl, windIconContainer, title);
+  // container.append(hourCard);
   return container;
 }

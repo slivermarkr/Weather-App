@@ -8,14 +8,10 @@ import getNextTwentyFourHours from "./components/getDates";
 import createElement from "./ui/createElement";
 import printHourCards from "./ui/createHourCard";
 
-// new Swiper(".swiper-container", {
+// new Swiper(".swiper", {
+//   direction: "horizontal",
 //   speed: 400,
-//   // spaceBetween: 60,
-//   slidesPerView: 2,
-//   // navigation: {
-//   //   nextEl: ".swiper-button-next",
-//   //   prevEl: ".swiper-button-prev",
-//   // },
+//   slidesPerView: 3,
 // });
 
 const ui = UI();

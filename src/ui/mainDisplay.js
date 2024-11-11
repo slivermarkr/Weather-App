@@ -111,7 +111,7 @@ export default function UI() {
     { winddir = "N/A", windspeed = "N/A", windgust = "N/A" } = {},
     unitMeasure
   ) => {
-    const unit = unitMeasure === "metric" ? "km/hr" : "mi/hr";
+    const unit = unitMeasure === "metric" ? "km/hr" : "mph";
 
     const container = createElement("div", "windInfo", null);
 
